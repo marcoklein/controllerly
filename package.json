@@ -1,0 +1,50 @@
+{
+  "name": "controllerly",
+  "version": "0.0.1",
+  "description": "Optimized Smartphone Gamepad Enabling Your Local Multiplayer Games.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "test:watch": "mocha --watch --watch-extensions ts -r ts-node/register test/**/*.spec.ts",
+    "build": "rimraf lib && tsc && parcel build src/index.ts -d lib/ --out-file index.js && parcel build src/Controllerly.ts -d lib/ --out-file controllerly.js",
+    "preversion": "npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoklein/controllerly.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "Gamepad",
+    "Remote",
+    "WebRTC",
+    "Typescript",
+    "Game",
+    "Development",
+    "Smartphone"
+  ],
+  "author": "Marco Klein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcoklein/controllerly/issues"
+  },
+  "homepage": "https://github.com/marcoklein/controllerly#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "parcel-bundler": "^1.12.3",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "controllerly-core": "^0.1.0"
+  }
+}
