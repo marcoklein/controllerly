@@ -8,7 +8,7 @@ Optimized Smartphone Gamepad Enabling Your Local Multiplayer Games.
 Easy integration into your new and existing games.
 
 ### Add to HTML
-```HTML
+```html
 <script src="https://cdn.jsdelivr.net/npm/controllerly@latest">
     // Controllery is exposed as a global variable
     console.log(Controllerly.version);
@@ -16,11 +16,11 @@ Easy integration into your new and existing games.
 ```
 
 ### Install via npm
-```bash
+```shell
 npm install controllerly
 ```
 Use with Typescript
-```typescript
+```javascript
 import { Controllerly } from 'controllerly';
 ```
 
