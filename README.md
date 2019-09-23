@@ -1,6 +1,9 @@
 
 [![npm version](https://badge.fury.io/js/controllerly.svg)](https://badge.fury.io/js/controllerly)
 [![Build Status](https://travis-ci.org/marcoklein/controllerly.svg?branch=master)](https://travis-ci.org/marcoklein/controllerly)
+[![dependencies Status](https://david-dm.org/marcoklein/controllerly/status.svg)](https://david-dm.org/marcoklein/controllerly)
+[![devDependencies Status](https://david-dm.org/marcoklein/controllerly/dev-status.svg)](https://david-dm.org/marcoklein/controllerly?type=dev)
+![NPM](https://img.shields.io/npm/l/controllerly)
 
 # Controllerly
 Optimized Smartphone Gamepad Enabling Your Local Multiplayer Games.
