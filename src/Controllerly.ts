@@ -1,5 +1,5 @@
 import { ControllerlyServer } from 'controllerly-core';
-
+import { version as packageVersion } from './version.generated';
 
 /**
  * Game-side Controllerly API.
@@ -64,6 +64,10 @@ export class Controllerly {
      */
     get useGamepadAPI(): boolean {
         return this._useGamepadAPI;
+    }
+
+    get version(): string {
+        return packageVersion;
     }
 
     
