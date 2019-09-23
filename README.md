@@ -15,8 +15,20 @@ Easy integration into your new and existing games.
 </script>
 ```
 
+For a fast integration you can map certain keyboard keys:
+```javascript
+// add keyboard mappings for the first controller
+Controllerly.putKeyboardMapping(0, {
+    left: 'A',
+    right: 'D',
+    start: 'ENTER',
+    a: 'Q',
+    b: 'W'
+});
+```
+
 ### Install via npm
-```shell
+```javascript
 npm install controllerly
 ```
 Use with Typescript
