@@ -11,7 +11,7 @@ let root: any = typeof self == 'object' && self.self === self && self ||
             {};
 
 // use existing remote gamepad api or load new instance
-var controllerly: Controllerly = root.controllerly || new Controllerly();
-root.controllerly = controllerly;
+var controllerly: Controllerly = root.Controllerly || new Controllerly();
+root.Controllerly = controllerly;
 
 export default controllerly;
