@@ -6,7 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "test:watch": "mocha --watch --watch-extensions ts -r ts-node/register test/**/*.spec.ts",
+    "test:watch": "mocha --watch --watch-extensions ts -r ts-node/register -r jsdom-global/register test/**/*.spec.ts",
     "build": "rimraf lib && tsc && parcel build src/index.ts -d lib/ --out-file index.js && parcel build src/Controllerly.ts -d lib/ --out-file controllerly.js",
     "prepare": "npm run build",
     "prepublishOnly": "npm test",
@@ -41,6 +41,8 @@
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
     "mocha": "^6.2.0",
     "parcel-bundler": "^1.12.3",
     "rimraf": "^3.0.0",
