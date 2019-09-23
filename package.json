@@ -11,7 +11,7 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm test",
     "preversion": "npm test",
-    "version": "",
+    "version": "genversion src/version.generated.ts --es6 && git add src/version.generated.ts",
     "postversion": "git push && git push --tags"
   },
   "repository": {
@@ -41,6 +41,7 @@
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
+    "genversion": "^2.2.0",
     "jsdom": "15.1.1",
     "jsdom-global": "3.0.2",
     "mocha": "^6.2.0",
