@@ -1,6 +1,14 @@
 import { ControllerlyServer } from 'controllerly-core';
 import { version as packageVersion } from './version.generated';
 
+export interface KeyMapping {
+    left: string,
+    right: string,
+    start: string,
+    a: string,
+    b: string
+}
+
 /**
  * Game-side Controllerly API.
  */
@@ -15,8 +23,6 @@ export class Controllerly {
      */
     constructor() {
         this._server = new ControllerlyServer();
-        // enable gamepad API mapping per default
-        this.useGamepadAPI = true;
     }
 
     /**
@@ -25,7 +31,14 @@ export class Controllerly {
      * 
      * This should ease the process of integrating Controllerly.
      */
-    setKeyboardMapping() {
+    putKeyboardMapping(index: number, mapping: KeyMapping) {
+    }
+
+    /**
+     * Presents the ConnectionCode in an alert.
+     * The alert closes if a controller connects.
+     */
+    showConnectionCodeAlert() {
     }
 
     private enableGamepadAPI() {
