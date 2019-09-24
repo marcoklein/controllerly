@@ -1,7 +1,7 @@
 /**
  * Exposes Controllerly API globally to the dom.
  */
-import { Controllerly as Controllerly } from './Controllerly';
+import { ControllerlyAPI } from './Controllerly';
 
 
 // add Controllerly API to dom
@@ -11,7 +11,8 @@ let root: any = typeof self == 'object' && self.self === self && self ||
             {};
 
 // use existing remote gamepad api or load new instance
-var controllerly: Controllerly = root.Controllerly || new Controllerly();
-root.Controllerly = controllerly;
+var Controllerly: ControllerlyAPI = root.Controllerly || new ControllerlyAPI();
+root.Controllerly = Controllerly;
 
-export default controllerly;
+export default Controllerly;
+export { Controllerly };

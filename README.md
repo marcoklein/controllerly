@@ -10,7 +10,7 @@ Optimized Smartphone Gamepad Enabling Your Local Multiplayer Games.
 
 Easy integration into your new and existing games.
 
-### Add to HTML
+## Add to HTML
 ```html
 <script src="https://cdn.jsdelivr.net/npm/controllerly@latest">
     // Controllery is exposed as a global variable
@@ -32,11 +32,10 @@ Easy integration into your new and existing games.
 You can also directly map to the native WebGamepad API. However, you should not provide keyboard mappings and use the GamepadAPI at the same time.
 ```javascript
 // map onto native Gamepad API
-Controllerly.useGamepadAPI = true;
+Controllerly.enableGamepadAPI();
 ```
 
-
-### Install via npm
+## Install via npm
 For a direct game integration you can add Controllerly directly to your project or game.
 
 ```javascript
@@ -46,16 +45,68 @@ Use with Typescript
 ```javascript
 // import Controllerly instance
 // the same instance is available globally
-import { controllerly } from 'controllerly';
+import Controllerly from 'controllerly';
 ```
+
+## Gamepad Layout Templates
+Use unique gamepad layouts that fit your game or project.
+
+```javascript
+Controllerly.changeLayout('classic');
+```
+
+Layouts define ids for the input controls like buttons. For the classic layout they are:
+```javascript
+left, right
+start, select
+a, b
+```
+
+> TODO insert pic
+
+The left and right area are the major areas. On small devices the user has the option to hide the center (green). He then has to open the center through an extra button.
+
+## Using Advanced Input Events
+To get the most out of your smartphone controlled gamepad, Controllerly provides the option to react to double taps or swipes.
+
+You have the following options:
+```javascript
+// taps
+tap (default)
+doubleTap
+longPress
+
+// swipes
+swipeUp
+swipeLeft
+swipeRight
+swipeDown
+```
+
+In your code you can then listen by writing
+```javascript
+Controllerly.on('b_doubleTap');
+```
+
+If you map keyboard events you extend the button name with the input action.
+```javascript
+Controllerly.putKeyboardMapping(0, {
+    left_tap: 'A',
+    right_doubleTap: 'D',
+    start_longPress: 'ENTER',
+    a: 'E',
+    a_swipeUp: 'Q'
+});
+```
+
 
 ## FAQ
 
 > How do I create my own Controllerly instance?
 ```javascript
 // if you prefer creating your own instance use
-import { Controllerly } from 'controllerly/lib/Controllerly';
-let controllerly = new Controllerly();
+import { ControllerlyAPI } from 'controllerly/lib/Controllerly';
+let controllerly = new ControllerlyAPI();
 // however, this is not recommended because Controllerly creates
 // one new WebRTC connection for each instance
 ```

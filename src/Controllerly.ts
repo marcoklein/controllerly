@@ -12,11 +12,11 @@ export interface KeyMapping {
 /**
  * Game-side Controllerly API.
  */
-export class Controllerly {
+export class ControllerlyAPI {
 
     private _server: ControllerlyServer;
 
-    private _useGamepadAPI: boolean = false;
+    private _gamepadAPIEnabled: boolean = false;
 
     /**
      * Creates a new Controllerly instance.
@@ -41,31 +41,15 @@ export class Controllerly {
     showConnectionCodeAlert() {
     }
 
-    private enableGamepadAPI() {
-
-    }
-
-    private disableGamepadAPI() {
-
+    enableGamepadAPI() {
+        if (this._gamepadAPIEnabled) {
+            console.warn('Controllerly Warning: Gamepad API already enabled.');
+            return;
+        }
+        this._gamepadAPIEnabled = true;
     }
 
     /* Getter and Setter */
-
-    set useGamepadAPI(useAPI: boolean) {
-        if (useAPI) {
-            if (!this._useGamepadAPI) {
-                // enable API
-                this.enableGamepadAPI();
-            }
-        } else {
-            if (this._useGamepadAPI) {
-                // disable API
-                this.disableGamepadAPI();
-            }
-        }
-        // store value
-        this._useGamepadAPI = useAPI;
-    }
 
     get server(): ControllerlyServer {
         return this._server;
@@ -75,8 +59,8 @@ export class Controllerly {
      * Controllerly maps around the native Web Gamepad API.
      * Defaults to true.
      */
-    get useGamepadAPI(): boolean {
-        return this._useGamepadAPI;
+    get gamepadAPIEnabled(): boolean {
+        return this._gamepadAPIEnabled;
     }
 
     get version(): string {
