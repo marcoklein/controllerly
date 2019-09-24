@@ -1,6 +1,6 @@
 {
   "name": "controllerly",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Optimized Smartphone Gamepad Enabling Your Local Multiplayer Games.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
