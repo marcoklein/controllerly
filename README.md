@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/marcoklein/controllerly.svg?branch=master)](https://travis-ci.org/marcoklein/controllerly)
 [![dependencies Status](https://david-dm.org/marcoklein/controllerly/status.svg)](https://david-dm.org/marcoklein/controllerly)
 [![devDependencies Status](https://david-dm.org/marcoklein/controllerly/dev-status.svg)](https://david-dm.org/marcoklein/controllerly?type=dev)
+[![Known Vulnerabilities](https://snyk.io//test/github/marcoklein/controllerly/badge.svg?targetFile=package.json)](https://snyk.io//test/github/marcoklein/controllerly?targetFile=package.json)
 ![NPM](https://img.shields.io/npm/l/controllerly)
 
 # Controllerly
