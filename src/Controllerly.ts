@@ -25,6 +25,10 @@ export class ControllerlyAPI {
         this._server = new ControllerlyServer();
     }
 
+    start(preferredConnectionCode?: string, numberOfRetries?: number): Promise<string> {
+        return this._server.start(preferredConnectionCode, numberOfRetries);
+    }
+
     /**
      * Map connected gamepads to certain key events.
      * If the user presses the buttons the key events are emitted.

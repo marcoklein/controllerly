@@ -13,7 +13,8 @@ Easy integration into your new and existing games.
 
 ## Add to HTML
 ```html
-<script src="https://cdn.jsdelivr.net/npm/controllerly@latest">
+<script src="https://cdn.jsdelivr.net/npm/controllerly@latest"></script>
+<script>
     // Controllery is exposed as a global variable
     console.log(Controllerly.version);
     // you can map certain gamepad keys to keyboard events
