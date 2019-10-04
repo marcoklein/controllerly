@@ -73,9 +73,12 @@ To get the most out of your smartphone controlled gamepad, Controllerly provides
 
 You have the following options:
 ```javascript
+// basics
+active
+inactive
+
 // taps
-tap (default)
-doubleTap
+tap
 longPress
 
 // swipes
@@ -87,7 +90,7 @@ swipeDown
 
 In your code you can then listen by writing
 ```javascript
-Controllerly.on('b_doubleTap');
+Controllerly.on('b_longPress');
 ```
 
 If you map keyboard events you extend the button name with the input action.
@@ -117,6 +120,12 @@ let controllerly = new ControllerlyAPI();
 The project addresses three main concerns regarding remote smartphone gamepads through WebRTC:
 
 ![Controllerly Packages](./docs/controllerly-packages.png)
+
+[Controllerly Server (This Repository)](https://github.com/marcoklein/controllerly)
+
+[Controllerly Core](https://github.com/marcoklein/controllerly-core)
+
+[Controllerly Client](https://github.com/marcoklein/controllerly-client)
 
 ## Server
 ## Core

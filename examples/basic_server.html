@@ -14,8 +14,16 @@
     <script src="../lib/index.js"></script>
     <script>
         console.log('Controllerly Basic Server Example.');
-        console.log(Controllerly);
-        Controllerly.start();
+        Controllerly.start().then(code => {
+            console.log('Connection code: ', code);
+
+            Controllerly.onClientConnected.on(() => {
+                console.log('New client connection!')
+            });
+            Controllerly.onClientDisconnected.on(() => {
+                console.log('Client disconnected!')
+            });
+        });
     </script>
 </body>
 
