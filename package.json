@@ -58,6 +58,6 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "controllerly-core": "^0.3.0"
+    "controllerly-core": "^0.3.1"
   }
 }
