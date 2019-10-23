@@ -1,13 +1,7 @@
 import { ControllerlyServer } from 'controllerly-core';
 import { version as packageVersion } from './version.generated';
 
-export interface KeyMapping {
-    left: string,
-    right: string,
-    start: string,
-    a: string,
-    b: string
-}
+export type KeyMapping = {[identifier: string]: string};
 
 /**
  * Game-side Controllerly API.
@@ -18,15 +12,44 @@ export class ControllerlyAPI {
 
     private _gamepadAPIEnabled: boolean = false;
 
+    private _keyboardMappings: {[index: number]: KeyMapping} = {};
+
     /**
      * Creates a new Controllerly instance.
      */
     constructor() {
         this._server = new ControllerlyServer();
+        this.addListeners();
+    }
+
+    private addListeners() {
+        this._server.onClientConnected.on((connection) => {
+            console.log('Controllerly on client connection.');
+            connection.onMessage.on((message) => {
+                if (message.type == 'buttonEvent') {
+                    let mapping = this._keyboardMappings[0];
+                    if (mapping) {
+                        for (let identifier in mapping) {
+                            if (identifier === message.data.name) {
+                                const key = mapping[identifier];
+                                this.emulateKeyDownEvent(key);
+                            }
+                        }
+                    }
+                }
+            });
+        });
     }
 
     start(preferredConnectionCode?: string, numberOfRetries?: number): Promise<string> {
         return this._server.start(preferredConnectionCode, numberOfRetries);
+    }
+
+    /* Keyboard Mappings */
+
+    addKeyboardMapping(mapping: KeyMapping): number {
+        // return index of added mapping
+        return -1;
     }
 
     /**
@@ -36,7 +59,19 @@ export class ControllerlyAPI {
      * This should ease the process of integrating Controllerly.
      */
     putKeyboardMapping(index: number, mapping: KeyMapping) {
+        this._keyboardMappings[index] = mapping;
     }
+    
+    protected emulateKeyDownEvent(key: string) {
+        let keyboardEvent = new KeyboardEvent("keydown",
+            {
+                key
+            }
+        );
+        document.dispatchEvent(keyboardEvent);
+    }
+
+    /* Utils */
 
     /**
      * Presents the ConnectionCode in an alert.
@@ -69,6 +104,10 @@ export class ControllerlyAPI {
 
     get version(): string {
         return packageVersion;
+    }
+
+    get keyboardMappings(): {[index: number]: KeyMapping} {
+        return this._keyboardMappings;
     }
 
     
