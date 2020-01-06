@@ -5,6 +5,8 @@ export type KeyMapping = {[identifier: string]: string};
 
 /**
  * Game-side Controllerly API.
+ * 
+ * Offers game-side side integrations like emulation of gamepads or the keyboard.
  */
 export class ControllerlyAPI {
 
@@ -24,7 +26,6 @@ export class ControllerlyAPI {
 
     private addListeners() {
         this._server.onClientConnected.on((connection) => {
-            console.log('Controllerly on client connection.');
             connection.onMessage.on((message) => {
                 if (message.type == 'buttonEvent') {
                     let mapping = this._keyboardMappings[0];
@@ -32,7 +33,8 @@ export class ControllerlyAPI {
                         for (let identifier in mapping) {
                             if (identifier === message.data.name) {
                                 const key = mapping[identifier];
-                                this.emulateKeyDownEvent(key);
+                                message.data.pressed
+                                this.emulateKeyboardEvent('keyup', key);
                             }
                         }
                     }
@@ -62,14 +64,15 @@ export class ControllerlyAPI {
         this._keyboardMappings[index] = mapping;
     }
     
-    protected emulateKeyDownEvent(key: string) {
-        let keyboardEvent = new KeyboardEvent("keydown",
+    protected emulateKeyboardEvent(event: 'keydown' | 'keyup', key: string) {
+        let keyboardEvent = new KeyboardEvent(event,
             {
                 key
             }
         );
         document.dispatchEvent(keyboardEvent);
     }
+
 
     /* Utils */
 

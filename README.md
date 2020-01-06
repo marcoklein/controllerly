@@ -128,5 +128,7 @@ The project addresses three main concerns regarding remote smartphone gamepads t
 [Controllerly Client](https://github.com/marcoklein/controllerly-client)
 
 ## Server
+The server lives on the game-side. It manages game integration and offers an API to integrate Controllerly into your games.
+
 ## Core
 ## Client
