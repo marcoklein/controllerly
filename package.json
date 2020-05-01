@@ -11,11 +11,12 @@
     "build:docs": "rimraf docs && parcel build docs-src/index.html -d docs --public-url ./",
     "docs": "parcel docs-src/index.pug -d dist-docs --open",
     "examples": "npm run build && parcel examples/index.html --open",
-    "prepare": "npm run build",
+    "prepare": "npm run snyk-protect && npm run build",
     "prepublishOnly": "npm test",
     "preversion": "npm test",
     "version": "genversion src/version.generated.ts --es6 && git add src/version.generated.ts",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -58,6 +59,8 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "controllerly-core": "^0.3.3"
-  }
+    "controllerly-core": "^0.3.3",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
